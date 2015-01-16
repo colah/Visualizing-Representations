@@ -284,36 +284,61 @@ var RepresentationSpacePlotMNIST = function RepresentationSpacePlotMNIST(s) {
 
   this.rep_plot.mouseover(function(i) {
       var name = mnist_reps_rep.names[i];
-      var n = -1, np = -1, k = -1, kindstr = null;
 
-      if (name.indexOf("_net")      > -1)  {k = 0;}
-      if (name.indexOf("_netR")     > -1)  {k = 1;}
-      if (name.indexOf("_convnet")  > -1)  {k = 2;}
-      if (name.indexOf("_netR200-") > -1)  {k = 3;}
-      if (name.indexOf("_netR40-")  > -1)  {k = 3;}
+      var human_name = function(name){
+        var n = -1, np = -1, k = -1, maxpool = false;
 
-      if (name.indexOf("_net1_")    > -1)  {n = 1;  }
-      if (name.indexOf("_net2_")    > -1)  {n = 2;  }
-      if (name.indexOf("_net5_")    > -1)  {n = 5;  }
-      if (name.indexOf("_net10_")   > -1)  {n = 10; }
-      if (name.indexOf("_net20_")   > -1)  {n = 20; }
-      if (name.indexOf("_net100_")  > -1)  {n = 100;}
-      if (name.indexOf("_net200_")  > -1)  {n = 200;}
+        if (name.indexOf("_net")      > -1)  {k = 0;}
+        if (name.indexOf("_netR")     > -1)  {k = 1;}
+        if (name.indexOf("_conv")     > -1)  {k = 2;}
+        if (name.indexOf("_netR200-") > -1)  {k = 3;}
+        if (name.indexOf("_netR40-")  > -1)  {k = 3;}
+        if (name.indexOf("_netR10-")  > -1)  {k = 3;}
 
-      if (name.indexOf("_netR1_")   > -1)  {n = 1;  }
-      if (name.indexOf("_netR2_")   > -1)  {n = 2;  }
-      if (name.indexOf("_netR5_")   > -1)  {n = 5;  }
-      if (name.indexOf("_netR10_")  > -1)  {n = 10; }
-      if (name.indexOf("_netR20_")  > -1)  {n = 20; }
-      if (name.indexOf("_netR100_") > -1)  {n = 100;}
-      if (name.indexOf("_netR200_") > -1)  {n = 200;}
+        if (name.indexOf("200-100") > -1)  {np = 200; n = 100;}
+        if (name.indexOf("40-20")   > -1)  {np = 40;  n = 20;}
+        if (name.indexOf("10-5")    > -1)  {np = 10;  n = 5;}
 
-      /*if (n > -1 && k == 0)
-        this_.info.html("<center>Hidden Layer with " + n + " sigmoid units. <br><br> 784-<b>" + n + "</b>-10</center>");
-      if (n > -1 && k == 1)
-        this_.info.html("<center>Hidden Layer with " + n + " ReLU units. <br><br> 784-<b>" + n + "</b>-10</center>");
-      if (n == -1 || k > 1)*/
-        this_.info.html("<center>" + name + "</center>");
+
+        if (name.indexOf("max2")  > -1)  {maxpool = true;}
+
+        if      (name.indexOf("net100")  > -1)  {n = 100;}
+        else if (name.indexOf("net200")  > -1)  {n = 200;}
+        else if (name.indexOf("net10")   > -1)  {n = 10; }
+        else if (name.indexOf("net20")   > -1)  {n = 20; }
+        else if (name.indexOf("net1")    > -1)  {n = 1;  }
+        else if (name.indexOf("net2")    > -1)  {n = 2;  }
+        else if (name.indexOf("net5")    > -1)  {n = 5;  }
+        else if (name.indexOf("net8")    > -1)  {n = 8;  }
+
+
+        if (name.indexOf("_netR1_")   > -1)  {n = 1;  }
+        if (name.indexOf("_netR2_")   > -1)  {n = 2;  }
+        if (name.indexOf("_netR5_")   > -1)  {n = 5;  }
+        if (name.indexOf("_netR10_")  > -1)  {n = 10; }
+        if (name.indexOf("_netR20_")  > -1)  {n = 20; }
+        if (name.indexOf("_netR100_") > -1)  {n = 100;}
+        if (name.indexOf("_netR200_") > -1)  {n = 200;}
+
+        if (n > -1 && k == 0)
+          return "Sigmoid Layer (" + n + " units)";
+        if (n > -1 && k == 1)
+          return "ReLU Layer (" + n + " units)";
+        if (n > -1 && k == 2 && maxpool)
+          return "Conv Layer ("+ n +" features; 5x5 patch; max 2x2)";
+        if (n > -1 && k == 2)
+          return "Conv Layer ("+ n +" features; 5x5 patch)";
+        if (n > -1 && k == 3)
+          return "Two ReLU Layers <br>(" + np + " units; " + n + " units)";
+        if (name == "mnist_raw")
+          return "Raw MNIST";
+        if (name.indexOf("netR[40, 20]") > -1) 
+          return "Two ReLU Layers <br>(40 units; 20 units)";
+        if (n == -1 || k > 1)
+          return name;
+      }
+
+      this_.info.html("<center>"+ human_name(name) + "</center>");
       this_.rep_display.show(name); 
     });
   this.rep_display.mouseover(function(i) { this_.img_display.show(i); });
@@ -357,6 +382,7 @@ RepresentationSpacePlotMNIST.prototype.child_layout = function child_layout() {
 
   this.info
       .style('position', 'absolute')
+      .style('font-size', '80%')
       .style('width',  rep_display)
       .style('height', (rep_plot-rep_display)/3)
       .style('left', rep_plot+2*gutter)

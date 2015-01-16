@@ -264,9 +264,34 @@ function display_embed(data, div, fix_width) {
         //  new_cat_div();
       }
 
+      var getMatchList = function(req, resp) {
+        var term = req.term;
+        var max_matches = 14;
+        if (term.length == 0) {
+          var matches = cats.slice(0, max_matches);
+          if (cats.length > max_matches){
+            matches.push('...');
+          }
+        } else {
+          var term_esc = term;
+          var regex = new RegExp(term_esc, 'i'); //ignore case
+          var matches = [];
+          for (var i = 0; i < cats.length; i++) {
+            if (!regex.test(cats[i]))
+              continue;
+            matches.push(cats[i]);
+            if (matches.length >= max_matches) {
+              matches.push('...');
+              break;
+            }
+          }
+        }
+        resp(matches);
+      }
+
       div.autocomplete({
         delay: 1,
-        source: cats,
+        source: getMatchList,
         select: catChange,
         change: catChange
       });
@@ -354,6 +379,10 @@ var friendly_reps = {};
         return "Conv Layer ("+ n +" features; 5x5 patch) -  " +i;
       if (n > -1 && k == 3)
         return "Two ReLU Layers (" + np + " units; " + n + " units) -  " +i;
+      if (name == "mnist_raw")
+        return "Raw MNIST";
+      if (name.indexOf("netR[40,20]") > -1) 
+        return "Two ReLU Layers (40 units; 20 units) -  " +i;
       if (n == -1 || k > 1)
         return name;
     }
