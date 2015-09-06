@@ -525,7 +525,7 @@ Thankfully, there's an easy way to forget about isometries. For a representation
 
 We can't really work with $d_X$ because it is actually a function on a very high-dimensional continuous space.[^FuncDist] We need to discretize it for it to be useful.
 
-[^FuncDist]: The natural way to think about distance between functions is to consider them as infinite dimensional vectors $(f(0), ~ f(1),~ f(2)...)$. In the case of a function on the real numbers or on $\mathbb{R}^n$, it's a $2^{\aleph_0}$ dimensional vector! While we can actually represent the function finitely (because we know it's based on a neural network, which has a finite number of paramaters) it's really hard to actually calculuate disances.
+[^FuncDist]: The natural way to think about distance between functions is to consider them as infinite dimensional vectors $(f(0), ~ f(1),~ f(2)...)$. In the case of a function on the real numbers or on $\mathbb{R}^n$, it's a $2^{\aleph_0}$ dimensional vector! While we can actually represent the function finitely (because we know it's based on a neural network, which has a finite number of paramaters) it's really hard to actually calculate distances.
 
 $$D_X = \left[\begin{array}{cccc} 
   d_X(x_0, x_0) & d_X(x_1, x_0) & d_X(x_2, x_0) & ... \\
@@ -618,7 +618,7 @@ Victor continues with his own thoughts:
 
 This quote really resonates with me. As a machine learning researcher, my job is basically to struggle with data that is incomprehensible -- literally impossible for the human mind to comprehend -- and try to build tools to think about it and work with it.[^MLAltDef]
 
-[^MLAltDef]: You could imagine defining a field this way, as attempting to build tools for thinking about and working with the complicated high-dimensional probability distributions we see in the real world. The field you get ins't quite machine learning, but it has a lot of overlap. It actually feels more compelling to me. Perhaps this is "data science"?
+[^MLAltDef]: You could imagine defining a field this way, as attempting to build tools for thinking about and working with the complicated high-dimensional probability distributions we see in the real world. The field you get isn't quite machine learning, but it has a lot of overlap. It actually feels more compelling to me. Perhaps this is "data science"?
 
 However, from the representation perspective, there's a further natural step to go with this idea...
 
@@ -665,7 +665,7 @@ Why not just use dimensionality reduction by itself? If we had just used dimensi
 
 I think that high-quality representations have a lot of potential for users interacting with complicated data, going far beyond what is explored here. The most natural direction is machine learning: once you are in a high-quality representation, many normally difficult tasks can be accomplished with very simple techniques and comparatively little data.[^TransferClaim] With a curated collection of representations, one could make some really exciting machine learning accessible,[^CurateReps] although it would carry with it challenges for end users[^RepLockIn] and the producers of representations.[^ImplicitModelInfo]
 
-[^TransferClaim]: This is some combination of transfer learning, pretraining, and multi-task learning. How well it works varies, but there's certainly a lot of successes. Obviously, the ideal is to have a lot of data to train a representation specifically for your task, but failing that. We can also try to make very transferable representations, possibly by training them for a bunch of different tasks.
+[^TransferClaim]: This is some combination of transfer learning, pretraining, and multi-task learning. How well it works varies, but there's certainly a lot of successes. Obviously, the ideal is to have a lot of data to train a representation specifically for your task. But failing that, we can also try to make very transferable representations, possibly by training them for a bunch of different tasks.
 
 [^CurateReps]: Curating large collections of structured data has lead to some really interesting tools (for example, Wolfram Alpha). My intuition is that curating a collection of high-quality representations for different kinds of data could also be really interesting. I think [MetaMind](https://www.metamind.io/) is the closest thing I know of to this, right now.
 
