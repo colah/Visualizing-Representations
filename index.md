@@ -167,7 +167,7 @@ In a word embedding, every word is a couple hundred dimensional vector. These ve
 
 To visualize the word embedding in two dimensions, we need to choose a dimensionality reduction technique to use. t-SNE optimizes for keeping points close to their neighbors, so it is the natural tool if we want to visualize which words are close together in our word embedding.
 
-Examining the t-SNE plot, we see that neighboring words tend to be related. But there's so many words! To get a higher-level view, lets highlight a few kinds of words.[^KindsOfWords] We can see areas corresponding to cities, food, body parts, feelings, relatives and different "travel" verbs.
+Examining the t-SNE plot, we see that neighboring words tend to be related. But there are so many words! To get a higher-level view, let's highlight a few kinds of words.[^KindsOfWords] We can see areas corresponding to cities, food, body parts, feelings, relatives and different "travel" verbs.
 
 [^KindsOfWords]: We categorize words using WordNet synsets. Each synset is labeled something like "region.n.03" (region, noun, meaning 3) or "travel.v.01" (travel, verb, meaning 1).
 
@@ -534,7 +534,7 @@ $$D_X = \left[\begin{array}{cccc}
   ... & ... & ... & ... \\ 
 \end{array} \right]$$
 
-One thing we can do with $D_X$ is flatten it to get a vector encoding the properties of the representation $X$. We can do this for a lot of representations, and we get a collection of high-dimensional vectors.
+One thing we can do with $D_X$ is to flatten it to get a vector encoding the properties of the representation $X$. We can do this for a lot of representations, and we get a collection of high-dimensional vectors.
 
 The natural thing to do, of course, is to apply dimensionality reduction, such as t-SNE, to our representations. Geoff Hinton dubbed this use of t-SNE "meta-SNE". But one can also use other kinds of dimensionality reduction.[^PriorMetaSne] [^MetaSneVariations]
 
@@ -625,7 +625,7 @@ However, from the representation perspective, there's a further natural step to 
 Representations in Human Vision
 ===============================
 
-Lets consider human vision for a moment. Our ability to see is amazing. The amazing part isn't our eyes detecting photons, though. That's the easy, simple part. The amazing thing is the ability of our brain to transform the mess of swirling high-dimensional data into something we can understand. To present it to us so well that it seems simple! We can do this because our brains have highly specialized pathways for processing visual data. 
+Let's consider human vision for a moment. Our ability to see is amazing. The amazing part isn't our eyes detecting photons, though. That's the easy, simple part. The amazing thing is the ability of our brain to transform the mess of swirling high-dimensional data into something we can understand. To present it to us so well that it seems simple! We can do this because our brains have highly specialized pathways for processing visual data. 
 
 Just as neural networks transform data from the original raw representations into nice representations, the brain transforms our senses from complicated high-dimensional data into nice representations, from the incomprehensible to the comprehensible. My eye detects photons, but before I even become consciously aware of what my eye sees, the data goes through incredibly sophisticated transformations, turning it into something I can reason about.[^Neuroscience] The brain does such a good job that vision seems easy! It's only when you try to understand visual data without using your visual system that you realize how incredibly complicated and difficult to understand it is.
 
@@ -640,7 +640,7 @@ The easiest way to get new kinds of data into the brain is to simply project it 
 
 We can also try to get this data to us symbolically. Of course, rattling off 10,000-dimensional vectors to people is hopeless. But traditional statistics gives us some simple models we can fit, and then discuss using language of means, variance, covariance and so on. Unfortunately, fitting gaussians is like describing clouds as ovals. Talking about the covariance of two variables is like talking about the slope, in a particular direction, of a high-dimensional surface. Even very sophisticated models from statistics seem unable to cope with the complicated, swirling, high-dimensional data we see in problems like vision.
 
-Deep learning gives us models that can work with this data. More that that, it gives us new representations of the data. The representations it produces aren't optimized to be nice representations for the human brain -- I have no idea how one would optimize for that, or even what it would mean -- but they are much nicer than the original data. I think that learning representations, with deep learning or other powerful models, is essential to helping humans understand new forms of data.
+Deep learning gives us models that can work with this data. More than that, it gives us new representations of the data. The representations it produces aren't optimized to be nice representations for the human brain -- I have no idea how one would optimize for that, or even what it would mean -- but they are much nicer than the original data. I think that learning representations, with deep learning or other powerful models, is essential to helping humans understand new forms of data.
 
 A Map of Wikipedia
 ===================
@@ -711,13 +711,13 @@ Perhaps you are now persuaded that deep learning has something helpful to offer 
 
 In computers, most user interface is designed around what is easy to implement with traditional programming. We have buttons and menus, dragging and dropping, and so on, because they are natural interfaces to make.
 
-We don't often think of them this way, but there's lots of user interfaces that are implemented with humans. When you write an address on an envelope and drop it in a postal box, that's a user interface. When you phone a restaurant and order take out, that's a user interface. They're just user interfaces in a different kind of system. Really, any kind of convention for how we interact with each other or our environment is an interface.
+We don't often think of them this way, but there are lots of user interfaces that are implemented with humans. When you write an address on an envelope and drop it in a postal box, that's a user interface. When you phone a restaurant and order take out, that's a user interface. They're just user interfaces in a different kind of system. Really, any kind of convention for how we interact with each other or our environment is an interface.
 
 A lot of machine learning research has focused on computerizing these traditional human-mediated interfaces: hand writing recognition, voice recognition, language understanding, and so on. One could argue that a lot of machine learning research is really about user interfaces!
 
 Computerizing traditional interfaces is an easy place to find applications of machine learning. But surely there are completely new interfaces that become possible with machine learning? It's hard for to imagine that there aren't really huge opportunities for new interfaces with machine learning, and I suspect that they'll be really obvious in retrospect, but I have no idea what they are. I do see a couple small leads, though:
 
-One direction that seems interesting is modeling user input. A really simple example of this is spelling checking: by modeling the structure of language, we can automatically recognize flaws. Another example -- one which I am extremely grateful for! -- is [Kristensson and Zhai (2004)](http://www.pokristensson.com/pubs/KristenssonZhaiUIST2004.pdf)'s work on swipe keyboards, which enable much easier text input on devices like smart phones, partly through models of user input. There's other examples, such as Google suggesting searches when you start typing. I guess a very general direction one can go here is using machine learning to anticipate what the user wants to do next and making it easy.
+One direction that seems interesting is modeling user input. A really simple example of this is spell checking: by modeling the structure of language, we can automatically recognize flaws. Another example -- one which I am extremely grateful for! -- is [Kristensson and Zhai (2004)](http://www.pokristensson.com/pubs/KristenssonZhaiUIST2004.pdf)'s work on swipe keyboards, which enable much easier text input on devices like smart phones, partly through models of user input. There are other examples, such as Google suggesting searches when you start typing. I guess a very general direction one can go here is using machine learning to anticipate what the user wants to do next and making it easy.
 
 Another direction is using machine learning to understand traditional media and then trying to augment them. For example, one could imagine a tool where one can write down and equation, have it automatically recognized and converted to LaTeX, and then given options to plot it, or allowed to manipulate it through an interface that allows only valid transformations (see [Terence Tao's blog post on this](https://terrytao.wordpress.com/2012/04/15/gamifying-algebra/)). Similarly, imagine a CAD program where one just draws and the program automatically understands your diagram, cleaning it up and enforcing geometric constraints. I often want a kind of 'augmented paper' like this, and machine learning seems like an essential component to making it.
 
@@ -746,7 +746,7 @@ The Future
 
 Right now machine learning research is mostly about getting computers to be able to understand data that humans do: images, sounds, text, and so on. But the focus is going to shift to getting computers to understand things that humans don't. We can either figure out how to use this as a bridge to allow humans to understand these things, or we can surrender entire modalities -- as rich, perhaps more rich, than vision or sound -- to be the sole domain of computers. I think user interface could be the difference between powerful machine learning tools -- artificial intelligence -- being a black box or a cognitive tool that extends the human mind.
 
-There's actually two kinds of black boxes we need to avoid. Two slightly different, but closely connected problems. The first problem is that deep learning itself is presently a kind of black box. The second is that tools using deep learning to solve particular problems might be black boxes.
+There are actually two kinds of black boxes we need to avoid. Two slightly different, but closely connected problems. The first problem is that deep learning itself is presently a kind of black box. The second is that tools using deep learning to solve particular problems might be black boxes.
 
 We need to figure out how to open the deep learning black box. One powerful approach is visualizing representations. In this essay, we used interactive media to visualize and explore some powerful models from Google's deep learning research group. We then observed that particular neural network architectures leave geometric signatures in their representations. Finally, we created the meta-SNE algorithm, in order to step up the ladder of abstraction, and think about the *space* of neural networks, instead of particular ones.
 
